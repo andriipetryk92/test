@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array;
+let randomNumbers = (x) => {
+        array = [];
+
+        for ( let i = 0; i < x; i++ ) {
+            array.push(Math.round(Math.random() * 100));
+        }
+        return array;
+    }
+    randomNumbers(20);
+    console.log(array);
+
+    let maxNumber = () => {
+        let maximum = Math.max.apply(null, array);
+        console.log(maximum);
+    }
+
+    let minNumber = () => {
+        let minimum = Math.min.apply(null, array);
+        console.log(minimum);
+    }
+
+    maxNumber(array);
+
+    minNumber(array);
+</script>
+</body>
+</html>
