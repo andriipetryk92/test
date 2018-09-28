@@ -1,58 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
 <body>
-<script>
+    <script>
+        let randomNumbers = (x) => {
+            var array = [];
+            for (let i = 0; i < x; i++) {
+                array.push(Math.round(Math.random() * 100));
+            }
+            return array;
+        };
+        var array = (randomNumbers(20));
+        let maxNumber = () => {
+            let maximum = Math.max.apply(null, array);
+            console.log(maximum);
+        };
+        let minNumber = () => {
+            let minimum = Math.min.apply(null, array);
+            console.log(minimum);
+        };
 
-    let array;
-    let randomNumbers = (x) => {
-        array = [];
-        for ( let i = 0; i < x; i++ ) {
-            array.push(Math.round(Math.random() * 100));
+        maxNumber(array);
+        minNumber(array);
+
+        let sortUp = (a, b) => {
+            return a - b;
+        };
+        let sortDown = (a, b) => {
+            return b - a;
+        };
+
+        function getRandomSortFunction() {
+            const sortFunctions = [sortUp, sortDown];
+            const min = 0;
+            const max = sortFunctions.length;
+
+            return sortFunctions[Math.floor(Math.random() * (max - min + 1)) + min]
         }
-    }
-    randomNumbers(20);
-    console.log(array);
 
+        function getFinalArray(num = 5, arraysLength = 5) {
+            var finalArray = [];
 
-    let maxNumber = () => {
-        let maximum = Math.max.apply(null, array);
-        console.log(maximum);
-    }
+            for (let i = num; i; i--) {
+                finalArray.push(...randomNumbers(arraysLength));
+            }
 
+            return finalArray.sort(getRandomSortFunction());
+        }
 
-    let minNumber = () => {
-        let minimum = Math.min.apply(null, array);
-        console.log(minimum);
-    };
+        console.log(getFinalArray());
 
-    maxNumber(array);
-    minNumber(array);
-
-
-     let sortUp = () => {
-        array.sort(function(a, b){return a - b});
-        console.log(array);
-        return array;
-    };
-     sortUp(array);
-
-     let sortDown = () => {
-        array.sort(function(a, b){return b - a});
-        console.log(array);
-        return array;
-    };
-     sortDown(array);
-
-
-let sortt = () => {
-console.log(array);
-};
-sortt(sortUp);
-
-</script>
+    </script>
 </body>
+
 </html>
